@@ -11,7 +11,7 @@
     <properties>
         <environment.configuration.file>src/test/resources/EnvConfigurationFile.json</environment.configuration.file>
         <testNGSuitesDirectory>suites</testNGSuitesDirectory>
-        <suiteName>all</suiteName>
+        <suiteName>api</suiteName>
     </properties>
     <dependencies>
         <dependency>
