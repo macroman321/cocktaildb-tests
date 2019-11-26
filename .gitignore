@@ -1,3 +1,4 @@
 cocktaildb.iml
 logs
 .idea
+/target/
