@@ -7,7 +7,6 @@ import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 import java.io.IOException;
 
@@ -18,9 +17,7 @@ public class CocktaildbTests {
 
     @BeforeClass
     public void initEnv(ITestContext iTestContext){
-
         cocktaidbApiHelper = new CocktaidbApiHelper(iTestContext);
-
     }
 
     @Test(
@@ -38,7 +35,6 @@ public class CocktaildbTests {
         String id = cocktaidbApiHelper.getRandomDrinkId();
         Drinks drinks = cocktaidbApiHelper.searchCocktailsId(id);
         Assert.assertNotNull(drinks, "Cocktail with id: " + id + " does not exist");
-
     }
 
     //Lets imagine that there is a requirement that all cocktails must have german instructions
@@ -48,11 +44,9 @@ public class CocktaildbTests {
     )
     public void checkGermanInstructionsTest() throws IOException {
         Drinks drinks = cocktaidbApiHelper.searchCocktailsName("");
-        SoftAssert softAssert = new SoftAssert();
         for(Drink drink: drinks.getDrinks()){
-            softAssert.assertNotNull(drink.getStrInstructionsDE(),drink.getStrDrink() + " does not have german instructions");
+            Assert.assertNotNull(drink.getStrInstructionsDE(),drink.getStrDrink() + " does not have german instructions");
         }
-        softAssert.assertAll();
     }
 
     //Same thing as above but with data provider
@@ -63,9 +57,7 @@ public class CocktaildbTests {
             dataProviderClass = com.cocktaildb.dataproviders.CocktailDataProvider.class
     )
     public void checkGermanInstructionsTestDP(Drink drink) throws IOException {
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertNotNull(drink.getStrInstructionsDE(),drink.getStrDrink() + " does not have german instructions");
-        softAssert.assertAll();
+        Assert.assertNotNull(drink.getStrInstructionsDE(),drink.getStrDrink() + " does not have german instructions");
     }
 
 }

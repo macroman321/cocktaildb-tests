@@ -22,8 +22,11 @@ public class CocktailDataProvider {
         CocktaidbApiHelper cocktaidbApiHelper = new CocktaidbApiHelper(iTestContext);
 
         Drinks drinks = cocktaidbApiHelper.searchCocktailsName("");
+
         for (Drink drink : drinks.getDrinks()){
-            testParameterSet.add(new Object[]{drink});
+            if(drink!=null){
+                testParameterSet.add(new Object[]{drink});
+            }
         }
 
         return testParameterSet.iterator();
