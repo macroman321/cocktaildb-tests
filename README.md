@@ -8,4 +8,4 @@ cocktaildb api testing framework
 Ignore red error log I copied and edited pom.xml I use atm and didn't have time to clean it up
 
 
-```mvn -Denv=prod -Dmaven.test.failure.ignore -Denvironment.configuration.file=src/test/resources/EnvConfigurationFile.json -DsuiteName=api  test```
+```mvn -Denv=prod -Denvironment.configuration.file=src/test/resources/EnvConfigurationFile.json -DsuiteName=api  test```
